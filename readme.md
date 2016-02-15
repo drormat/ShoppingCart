@@ -1,3 +1,10 @@
+## EDIT //
+## Added functionality of a Shopping cart to the pagination demo Store application
+
+Demo: http://ec2-52-29-127-64.eu-central-1.compute.amazonaws.com:8080/
+
+
+## Original Post:
 ## Laravel Backbone - based in-place pagination demo Store application
 
 See demo at: http://demos.maxoffsky.com/ajax-pagination/
