@@ -45,6 +45,15 @@
                       <li><a href="{{ url('admin/seo') }}">SEO</a></li>
                     </ul>
                   </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shopping Cart<b class="caret"></b></a>
+                        <ul class="dropdown-menu" style="width: 300px">
+                            <div class="keep-open">
+                                <ul id="cart-list"></ul>
+                            </div>
+                            <a href="{{  url('cartitems/checkout') }}"><div class="btn checkout-btn" >Continue to Checkout</div></a>
+                        </ul>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container -->
@@ -69,6 +78,7 @@
     <script type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script type="text/javascript" src='{{ url("vendor/selectize/js/standalone/selectize.min.js") }}'></script>
+    <script type="text/javascript" src='{{ url("js/cartHandler.js") }}'></script>
     <script type="text/javascript" src='{{ url("js/main.js") }}'></script>
     @yield('scripts')
 

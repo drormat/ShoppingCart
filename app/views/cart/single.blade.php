@@ -1,31 +1,25 @@
 @extends('layout')
 
 @section('title')
-{{{ $seo->title or 'Viewing Category '.$category->name }}}
-@endsection
-
-@section('description')
-{{{ $seo->description or 'My great category'}}}
-@endsection
-
-@section('keywords')
-{{{ $seo->keywords or 'default, keywords, for, my, category' }}}
+"Shopping Cart"
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-md-3">
-            @include('partials.sidebar.categories', array('categories' => $categories,'current' => $category->id))
-        </div>
-        <div class="col-md-9">
-           @foreach($category->products as $product)
+        <div class="col-md-9 cart-items-container">
+            <div hidden>{{$sum = 0;}}</div>
+           @foreach($cartItems as $product)
                <div class="col-sm-4 col-lg-4 col-md-4">
                  <div class="thumbnail">
                    <img src="http://placehold.it/320x120" alt="">
-                   <div class="caption">
+                   <div class="caption caption-checkout">
                        <h4 class="pull-right">${{ number_format($product->pricing, 2);}}</h4>
                        <h4><a href="{{url('products/'.$product->slug)}}">{{$product->name}}</a></h4>
                        <p>{{$product->short_description}}</p>
+                       <p>Amount of items: <b>{{$product->amount}}</b></p>
+                       <h4 class="pull-right">Total: ${{ number_format($product->pricing*$product->amount, 2);}}</h4>
+                       <div hidden>{{$sum+=$product->pricing*$product->amount }}</div>
+                       <button class="btn btn-remove" onclick="cartHandler.removeFromCart({{$product->id}},true)">Remove Item</button>
                    </div>
                    <div class="ratings">
                        <p class="pull-right">{{$product->rating_count}} {{ Str::plural('review', $product->rating_count);}}</p>
@@ -35,12 +29,11 @@
                            @endfor
                        </p>
                    </div>
-                     <div class="add-to-cart" style="padding-bottom: 10px;direction: rtl;padding-left: 10px; padding-right:10px;">
-                         <button class="btn btn-add" type="button"  onclick="cartHandler.addToCart({{{$product->id}}},'{{{$product->name}}}')">Add to Cart</button>
-                     </div>
                  </div>
                </div>
            @endforeach
         </div>
     </div>
+    <h2 style="margin-left:20%">Total price:<b>${{$sum}}</b></h2>
+    <button class="btn checkout-btn">Pay with DreamPay</button>
 @stop

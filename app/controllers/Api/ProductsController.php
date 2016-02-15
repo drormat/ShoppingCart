@@ -35,7 +35,7 @@ class ApiProductsController extends \BaseController {
         $count = $sortedProducts->count();
 
         // Retrieve the products using Laravel's Eloquent ORM methods
-        $products = $sortedProducts->take($perPage)->offset($offset)->get(array('slug','rating_cache','name','short_description','icon','banner','pricing'));
+        $products = $sortedProducts->take($perPage)->offset($offset)->get(array('id','slug','rating_cache','name','short_description','icon','banner','pricing'));
 
         // Return the results as JSON data
         return Response::json(array(

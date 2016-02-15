@@ -6,5 +6,6 @@ return array(
 	'seo_mapping' => array(
 		'products' 			=> 'Products',
 		'categories'		=> 'Categories',
+		'cart' 				=> 'Cart',
 	),
 );

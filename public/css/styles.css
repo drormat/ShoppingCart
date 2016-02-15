@@ -1,3 +1,67 @@
+/*Checkout view styling*/
+.btn-add{
+    width: 100%;
+    height: 40px;
+    background-color: lightgreen;
+    position: relative;
+}
+
+.btn-remove{
+    width: 100%;
+    height: 40px;
+    background-color: lightcoral;
+    position: relative;
+}
+
+.caption-checkout{
+    height: 200px !important;
+}
+
+.cart-items-container{
+    width:100% !important;
+}
+/*end Checkout view styling*/
+
+/*Cart styling*/
+.checkout-btn{
+    width: 60%;
+    margin-top: 10px;
+    margin-left: 20%;
+    height: 40px;
+    background-color: lightblue;
+    padding: 10px;
+    position: relative;
+}
+ul#cart-list{
+    list-style-type: none;
+    display: table;
+}
+
+li.item-list {
+    display: table-row;
+}
+
+.item-name, .item-amount, .remove-btn {
+    display: table-cell;
+}
+
+.item-amount{
+    padding: 0 15px;
+}
+
+.remove-btn{
+    padding-left: 15px
+}
+
+
+.single{
+    width: 150px;
+    right: 10px;
+}
+
+/*end Cart styling*/
+
+
 .thumbnail{ padding: 0;}
 
 .carousel-control, .item{

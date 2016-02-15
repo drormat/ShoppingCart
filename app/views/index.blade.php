@@ -72,6 +72,9 @@
             <% }; %>
           </p>
       </div>
+         <div class="add-to-cart" style="padding-bottom: 10px;direction: rtl;padding-left: 10px; padding-right:10px;">
+            <button class="btn btn-add" type="button" onclick="cartHandler.addToCart(<%= id %>,'<%= name %>')">Add to Cart</button>
+         </div>
     </div>
    </script>
 

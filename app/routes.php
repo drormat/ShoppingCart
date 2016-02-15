@@ -2,18 +2,39 @@
 
 Route::resource('admin/seo', 'AdminSeoController');
 
+Route::resource('api/cart', 'ApiCartController');
+
 // This is the route for the Backbone pagination
 Route::get('api/products', 'ApiProductsController@getIndex');
+
+// This is route for the cart get
+Route::get('api/cart','ApiCartController@getProductList');
 
 // Route for Homepage - displays all products from the shop
 Route::get('/', function()
 {
 	$products = Product::all();
 	$categories = Category::all();
+	$cartItems = Cart::all();
 
 	return View::make('index', array(
 		'products'		=> $products, 
-		'categories' 	=> $categories
+		'categories' 	=> $categories,
+		'cartItems' 	=> $cartItems
+	));
+});
+
+Route::get('cartitems/checkout', function() {
+//	$product 	= Product::all();
+	$cartItems =DB::table('products')
+		->join('CartItems', 'products.id', '=', 'CartItems.product_id')
+		->select('products.id','products.name','products.pricing','products.slug',
+			'products.short_description','products.rating_count','products.rating_cache','CartItems.amount')
+		->get();
+
+	return View::make('cart.single', array(
+//		'product'	=> $product,
+		'cartItems' => $cartItems
 	));
 });
 

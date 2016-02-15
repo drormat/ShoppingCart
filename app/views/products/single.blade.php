@@ -111,6 +111,9 @@
                     {{ number_format($product->rating_cache, 1);}} stars
                   </p>
               </div>
+                <div class="add-to-cart" style="padding-bottom: 10px;direction: rtl;">
+                    <button class="btn btn-add single" type="button"  onclick="cartHandler.addToCart({{{$product->id}}},'{{{$product->name}}}')">Add to Cart</button>
+                </div>
             </div>
             <div class="well" id="reviews-anchor">
               <div class="row">

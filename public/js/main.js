@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
     $('#searchbox').selectize({
         valueField: 'url',
         labelField: 'name',
@@ -7,8 +7,8 @@ $(document).ready(function(){
         options: [],
         create: false,
         render: {
-            option: function(item, escape) {
-                return '<div><img src="'+ item.icon +'">' +escape(item.name)+'</div>';
+            option: function (item, escape) {
+                return '<div><img src="' + item.icon + '">' + escape(item.name) + '</div>';
             }
         },
         optgroups: [
@@ -16,26 +16,35 @@ $(document).ready(function(){
             {value: 'category', label: 'Categories'}
         ],
         optgroupField: 'class',
-        optgroupOrder: ['product','category'],
-        load: function(query, callback) {
+        optgroupOrder: ['product', 'category'],
+        load: function (query, callback) {
             if (!query.length) return callback();
             $.ajax({
-                url: root+'/api/search',
+                url: root + '/api/search',
                 type: 'GET',
                 dataType: 'json',
                 data: {
                     q: query
                 },
-                error: function() {
+                error: function () {
                     callback();
                 },
-                success: function(res) {
+                success: function (res) {
                     callback(res.data);
                 }
             });
         },
-        onChange: function(){
+        onChange: function () {
             window.location = this.items[0];
         }
     });
+
+    cartHandler.fillCartList();
+
+    //prevent cart dropdown to close when clicking inside
+    $('.keep-open').on('click', function (e) {
+        e.stopPropagation();
+        return false;
+    });
+
 });
